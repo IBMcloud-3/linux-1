@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+read -p "enter the input string:" string
+echo "$string"
+if [[ $string =~ [A-Z] ]]
+then
+string=$(echo $string | tr [:upper:] [:lower:])
+fi
+for((i=${#string};i>0;i--))
+do
+    echo "${string:0:i}"
+done

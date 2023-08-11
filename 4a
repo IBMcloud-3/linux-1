@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+recurse(){
+read -p "enter the string:" string
+if [[ $string =~ [[:upper:]]+$ ]]
+then
+string=$(echo $string | tr [:upper:] [:lower:])
+elif [[ $string =~ [[:lower:]]+$ ]]
+then
+string=$string
+else
+echo "enter only characters"
+recurse
+fi
+}
+recurse
+echo "$string"

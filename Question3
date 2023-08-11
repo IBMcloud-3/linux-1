@@ -1,0 +1,9 @@
+minikube start
+kubectl create namespace namespacea
+kubectl create namespace namespaceb
+kubectl create deployment nginx-deployment --image=nginx --namespace=namespacea
+kubectl expose deployment nginx-deployment --port=80 --type=NodePort --namespace=namespaceb
+kubectl get pods --namespace=namespacea
+kubectl create deployment busybox-deployment --image=busybox --namespace=namespaceb
+kubectl run busybox-pod --image=busybox -n namespaceb --rm -it -- sh
+wget -O- nginx-deployment.namespacea:80
